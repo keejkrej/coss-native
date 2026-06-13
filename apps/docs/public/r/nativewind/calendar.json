@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar",
+  "title": "Calendar",
+  "description": "Date picker calendar.",
+  "dependencies": [
+    "@marceloterreiro/flash-calendar"
+  ],
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/calendar.tsx",
+      "content": "import { cn } from '@/registry/nativewind/lib/utils';\nimport {\n  Calendar as FlashCalendar,\n  fromDateId,\n  toDateId,\n  type CalendarActiveDateRange,\n} from '@marceloterreiro/flash-calendar';\nimport * as React from 'react';\nimport { View } from 'react-native';\n\ntype CalendarProps = {\n  className?: string;\n  selected?: Date;\n  onSelect?: (date: Date | undefined) => void;\n  mode?: 'single' | 'range';\n  showOutsideDays?: boolean;\n  disabled?: boolean;\n};\n\nfunction Calendar({\n  className,\n  selected,\n  onSelect,\n  mode = 'single',\n}: CalendarProps) {\n  const monthDate = selected ?? new Date();\n  const calendarActiveDateRanges = React.useMemo<CalendarActiveDateRange[]>(() => {\n    if (!selected) return [];\n    const id = toDateId(selected);\n    return [{ startId: id, endId: id }];\n  }, [selected]);\n\n  return (\n    <View className={cn('w-full max-w-sm', className)}>\n      <FlashCalendar\n        calendarMonthId={toDateId(monthDate)}\n        calendarActiveDateRanges={mode === 'single' ? calendarActiveDateRanges : calendarActiveDateRanges}\n        onCalendarDayPress={(dateId) => {\n          const next = fromDateId(dateId);\n          if (selected && toDateId(selected) === dateId) {\n            onSelect?.(undefined);\n            return;\n          }\n          onSelect?.(next);\n        }}\n        calendarDayHeight={36}\n        calendarRowVerticalSpacing={8}\n        calendarRowHorizontalSpacing={4}\n      />\n    </View>\n  );\n}\n\nexport { Calendar };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

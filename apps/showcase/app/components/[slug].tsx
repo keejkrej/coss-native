@@ -3,15 +3,20 @@ import { Stack, useLocalSearchParams } from 'expo-router';
 import { accordionPreviews } from '@showcase/previews/accordion';
 import { alertPreviews } from '@showcase/previews/alert';
 import { alertDialogPreviews } from '@showcase/previews/alert-dialog';
+import { autocompletePreviews } from '@showcase/previews/autocomplete';
 import { avatarPreviews } from '@showcase/previews/avatar';
 import { badgePreviews } from '@showcase/previews/badge';
 import { breadcrumbPreviews } from '@showcase/previews/breadcrumb';
 import { buttonPreviews } from '@showcase/previews/button';
+import { calendarPreviews } from '@showcase/previews/calendar';
 import { cardPreviews } from '@showcase/previews/card';
 import { checkboxPreviews } from '@showcase/previews/checkbox';
 import { checkboxGroupPreviews } from '@showcase/previews/checkbox-group';
 import { collapsiblePreviews } from '@showcase/previews/collapsible';
+import { comboboxPreviews } from '@showcase/previews/combobox';
+import { commandPreviews } from '@showcase/previews/command';
 import { dialogPreviews } from '@showcase/previews/dialog';
+import { drawerPreviews } from '@showcase/previews/drawer';
 import { emptyPreviews } from '@showcase/previews/empty';
 import { fieldPreviews } from '@showcase/previews/field';
 import { fieldsetPreviews } from '@showcase/previews/fieldset';
@@ -24,6 +29,8 @@ import { kbdPreviews } from '@showcase/previews/kbd';
 import { labelPreviews } from '@showcase/previews/label';
 import { menuPreviews } from '@showcase/previews/menu';
 import { meterPreviews } from '@showcase/previews/meter';
+import { numberFieldPreviews } from '@showcase/previews/number-field';
+import { otpFieldPreviews } from '@showcase/previews/otp-field';
 import { paginationPreviews } from '@showcase/previews/pagination';
 import { popoverPreviews } from '@showcase/previews/popover';
 import { previewCardPreviews } from '@showcase/previews/preview-card';
@@ -33,6 +40,7 @@ import { scrollAreaPreviews } from '@showcase/previews/scroll-area';
 import { selectPreviews } from '@showcase/previews/select';
 import { separatorPreviews } from '@showcase/previews/separator';
 import { sheetPreviews } from '@showcase/previews/sheet';
+import { sidebarPreviews } from '@showcase/previews/sidebar';
 import { skeletonPreviews } from '@showcase/previews/skeleton';
 import { sliderPreviews } from '@showcase/previews/slider';
 import { switchPreviews } from '@showcase/previews/switch';
@@ -50,15 +58,20 @@ const PREVIEWS: Record<string, { name: string; component: () => React.JSX.Elemen
   accordion: accordionPreviews,
   alert: alertPreviews,
   'alert-dialog': alertDialogPreviews,
+  autocomplete: autocompletePreviews,
   avatar: avatarPreviews,
   badge: badgePreviews,
   breadcrumb: breadcrumbPreviews,
   button: buttonPreviews,
+  calendar: calendarPreviews,
   card: cardPreviews,
   checkbox: checkboxPreviews,
   'checkbox-group': checkboxGroupPreviews,
   collapsible: collapsiblePreviews,
+  combobox: comboboxPreviews,
+  command: commandPreviews,
   dialog: dialogPreviews,
+  drawer: drawerPreviews,
   empty: emptyPreviews,
   field: fieldPreviews,
   fieldset: fieldsetPreviews,
@@ -71,6 +84,8 @@ const PREVIEWS: Record<string, { name: string; component: () => React.JSX.Elemen
   label: labelPreviews,
   menu: menuPreviews,
   meter: meterPreviews,
+  'number-field': numberFieldPreviews,
+  'otp-field': otpFieldPreviews,
   pagination: paginationPreviews,
   popover: popoverPreviews,
   'preview-card': previewCardPreviews,
@@ -80,6 +95,7 @@ const PREVIEWS: Record<string, { name: string; component: () => React.JSX.Elemen
   select: selectPreviews,
   separator: separatorPreviews,
   sheet: sheetPreviews,
+  sidebar: sidebarPreviews,
   skeleton: skeletonPreviews,
   slider: sliderPreviews,
   switch: switchPreviews,

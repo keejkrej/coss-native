@@ -93,6 +93,14 @@ export const COMPONENTS = [
   'sheet',
   'menu',
   'toast',
+  'otp-field',
+  'number-field',
+  'calendar',
+  'autocomplete',
+  'combobox',
+  'command',
+  'sidebar',
+  'drawer',
 ];
 
 export const CORE_DEPENDENCIES = [
@@ -138,6 +146,9 @@ export const PRIMITIVE_DEPS = {
   table: ['@rn-primitives/table'],
   menu: ['@rn-primitives/dropdown-menu', '@rn-primitives/portal'],
   toast: ['@rn-primitives/toast'],
+  calendar: ['@marceloterreiro/flash-calendar'],
+  sidebar: ['@react-native-async-storage/async-storage'],
+  drawer: ['@gorhom/bottom-sheet'],
 };
 
 export const REGISTRY_DEPS = {
@@ -173,4 +184,11 @@ export const REGISTRY_DEPS = {
   sheet: ['text', 'icon', 'native-only-animated-view', 'dialog'],
   menu: ['text', 'icon', 'native-only-animated-view'],
   toast: ['text'],
+  'otp-field': ['separator'],
+  'number-field': ['icon', 'label'],
+  autocomplete: ['text', 'input', 'scroll-area', 'icon'],
+  combobox: ['text', 'input', 'scroll-area', 'icon', 'badge', 'autocomplete'],
+  command: ['text', 'input', 'scroll-area', 'icon', 'dialog', 'autocomplete'],
+  sidebar: ['text', 'button', 'input', 'scroll-area', 'separator', 'sheet', 'skeleton'],
+  drawer: ['text', 'button', 'scroll-area', 'menu', 'dialog'],
 };

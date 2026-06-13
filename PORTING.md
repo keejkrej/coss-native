@@ -6,7 +6,7 @@ This document describes how coss web components map to coss-native, what is appr
 
 | Layer | Web (coss) | Native (coss-native) |
 |-------|------------|----------------------|
-| Headless | @base-ui/react | @rn-primitives/* |
+| Headless | @base-ui/react | @rn-primitives/* + custom primitives |
 | Styling | Tailwind CSS v4 + globals.css | NativeWind v4 + tailwind.config.js |
 | Distribution | @coss/ui npm subpaths | Copy-paste registry + CLI |
 | Polymorphism | useRender + render prop | Slot + asChild |
@@ -15,7 +15,7 @@ This document describes how coss web components map to coss-native, what is appr
 
 Semantic token **names** match coss (`background`, `primary`, `destructive`, `info`, `success`, `warning`, `sidebar-*`, etc.).
 
-Values are converted from coss Tailwind v4 expressions (`--alpha()`, `color-mix()`, `before:` shadows) to static HSL channel variables in:
+Values are converted from coss Tailwind v4 expressions to static HSL channel variables in:
 
 - `apps/showcase/global.css`
 - `apps/showcase/tailwind.config.js`
@@ -52,41 +52,29 @@ Web gets `hover:` / `focus-visible:`; native gets `active:`.
 
 ## Dialog naming (coss compatibility)
 
-coss uses `DialogPopup` and `DialogBackdrop`. coss-native exports both names plus shadcn aliases:
+coss uses `DialogPopup` and `DialogBackdrop`. coss-native exports both names plus shadcn aliases.
 
-- `DialogPopup` = `DialogContent`
-- `DialogBackdrop` = `DialogOverlay`
+## Implemented components (56 registry UI items)
 
-## Implemented components (48 registry UI items)
+All coss web primitives are ported except particles (~484 composed patterns).
 
-**MVP:** Text, Button, Input, Card, Badge, Separator, Switch, Checkbox, Dialog, Select
+**Phase 4 additions:** OTP Field, Number Field, Calendar, Autocomplete, Combobox, Command, Sidebar, Drawer
 
-**Phase 1 — Presentational:** Skeleton, Alert, Label, Avatar, Empty, Kbd, Frame, Breadcrumb, Pagination, Checkbox Group
+See [README.md](README.md) for the full component list.
 
-**Phase 2 — Interactive:** Textarea, Radio Group, Toggle, Toggle Group, Slider, Progress, Accordion, Collapsible, Tabs, Alert Dialog, Tooltip, Popover, Preview Card, Toolbar
+## Phase 4 simplifications
 
-**Phase 3 — Composition:** Field, Fieldset, Form, Group, Input Group, Meter, Scroll Area, Table, Sheet, Menu, Toast
-
-**Infrastructure:** icon, spinner, native-only-animated-view, utils, global-css
-
-## Deferred (mobile-paradigm gaps)
-
-These 8 coss web primitives require custom native libraries or redesign before porting:
-
-| Component | Blocker | Future direction |
-|-----------|---------|------------------|
-| drawer | 500+ LOC, embedded menu, swipe gestures | `@gorhom/bottom-sheet` + ported menu |
-| sidebar | cookies, keyboard shortcuts, 20+ subcomponents | Sheet-based mobile nav + AsyncStorage |
-| calendar | `react-day-picker` | `react-native-calendars` or native date picker |
-| autocomplete | no RN primitive | custom list + portal |
-| combobox | no RN primitive | builds on autocomplete |
-| command | no RN primitive | custom list + portal; builds on autocomplete |
-| otp-field | no RN primitive | segmented TextInput pattern |
-| number-field | no RN primitive | stepper + numeric input pattern |
+| Component | Web behavior | Native approximation |
+|-----------|--------------|----------------------|
+| number-field | Mouse scrub area | `NumberFieldScrubArea` renders label only (no drag) |
+| calendar | `react-day-picker` | `@marceloprado/flash-calendar`; single-date first |
+| sidebar | cookies + Cmd/Ctrl+B | AsyncStorage persistence; no keyboard shortcut |
+| drawer | swipe + nested stack | `@gorhom/bottom-sheet` on native; dialog fallback on web |
+| autocomplete/combobox | Base UI positioning | Popover-style list anchored to input |
 
 ## Particles
 
-The ~484 composed patterns in coss registry are out of scope until primitives are ported.
+The ~484 composed patterns in coss registry are out of scope until needed for docs/examples.
 
 ## Install flow
 
@@ -99,8 +87,6 @@ pnpm coss-native doctor
 ```
 
 From another Expo app, set `COSS_REGISTRY_URL` to `apps/docs/public/r/nativewind` and run `node apps/cli/src/bin.js add …`.
-
-When published, `npx @coss/native-cli add button` will work against a hosted registry.
 
 ## Reference repos
 

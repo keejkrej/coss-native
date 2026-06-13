@@ -902,6 +902,170 @@
       "dependencies": [
         "@rn-primitives/toast"
       ]
+    },
+    {
+      "name": "otp-field",
+      "type": "registry:ui",
+      "title": "OTP Field",
+      "description": "One-time password segmented input.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/otp-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "separator"
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Number Field",
+      "description": "Numeric input with stepper controls.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/number-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "icon",
+        "label"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Date picker calendar.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@marceloterreiro/flash-calendar"
+      ]
+    },
+    {
+      "name": "autocomplete",
+      "type": "registry:ui",
+      "title": "Autocomplete",
+      "description": "Filterable input with suggestions.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/autocomplete-primitive.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/autocomplete.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "input",
+        "scroll-area",
+        "icon"
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Select or multi-select with chips.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "input",
+        "scroll-area",
+        "icon",
+        "badge",
+        "autocomplete"
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Command palette and inline search.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "input",
+        "scroll-area",
+        "icon",
+        "dialog",
+        "autocomplete"
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "App shell sidebar navigation.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "button",
+        "input",
+        "scroll-area",
+        "separator",
+        "sheet",
+        "skeleton"
+      ],
+      "dependencies": [
+        "@react-native-async-storage/async-storage"
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Swipeable drawer panel.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "button",
+        "scroll-area",
+        "menu",
+        "dialog"
+      ],
+      "dependencies": [
+        "@gorhom/bottom-sheet"
+      ]
     }
   ]
 }
