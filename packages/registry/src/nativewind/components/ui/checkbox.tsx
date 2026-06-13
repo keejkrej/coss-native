@@ -1,5 +1,10 @@
 import { Icon } from '@/registry/nativewind/components/ui/icon';
-import { cn } from '@/registry/nativewind/lib/utils';
+import {
+  cn,
+  DARK_INPUT_BG,
+  DISABLED_OPACITY,
+  SURFACE_SHADOW,
+} from '@/registry/nativewind/lib/utils';
 import * as CheckboxPrimitive from '@rn-primitives/checkbox';
 import { Check } from 'lucide-react-native';
 import { Platform } from 'react-native';
@@ -20,13 +25,18 @@ function Checkbox({
   return (
     <CheckboxPrimitive.Root
       className={cn(
-        'border-input dark:bg-input/30 size-4 shrink-0 rounded border shadow-sm shadow-black/5',
+        'border-input bg-background size-4.5 shrink-0 rounded border',
+        SURFACE_SHADOW,
+        DARK_INPUT_BG,
         Platform.select({
-          web: 'focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive outline-none focus-visible:ring-[3px]',
+          web: cn(
+            'focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-offset-background outline-none focus-visible:ring-2 focus-visible:ring-offset-1',
+            'aria-invalid:border-destructive/36 focus-visible:aria-invalid:border-destructive/64 focus-visible:aria-invalid:ring-destructive/48'
+          ),
           native: 'overflow-hidden',
         }),
         props.checked && cn('border-primary', checkedClassName),
-        props.disabled && 'opacity-50',
+        props.disabled && DISABLED_OPACITY,
         className
       )}
       hitSlop={DEFAULT_HIT_SLOP}

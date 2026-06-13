@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "../../packages/registry/src/nativewind/lib/utils.ts",
-      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport const DISABLED_OPACITY = 'opacity-64';\nexport const SURFACE_SHADOW = 'shadow-sm shadow-black/5';\nexport const ELEVATED_SHADOW = 'shadow-lg shadow-black/5';\nexport const DARK_INPUT_BG = 'dark:bg-input/32';\nexport const BACKDROP_OVERLAY = 'bg-black/32';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
       "type": "registry:lib"
     }
   ],

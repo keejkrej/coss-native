@@ -1,5 +1,5 @@
 import { TextClassContext } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, DISABLED_OPACITY, SURFACE_SHADOW } from '@/registry/nativewind/lib/utils';
 import * as TabsPrimitive from '@rn-primitives/tabs';
 import { Platform } from 'react-native';
 
@@ -17,7 +17,7 @@ function TabsList({
   return (
     <TabsPrimitive.List
       className={cn(
-        'bg-muted flex h-9 flex-row items-center justify-center rounded-lg p-[3px]',
+        'bg-muted text-muted-foreground/72 flex h-9 flex-row items-center justify-center rounded-lg p-0.5',
         Platform.select({ web: 'inline-flex w-fit', native: 'mr-auto' }),
         className
       )}
@@ -31,20 +31,22 @@ function TabsTrigger({
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
   const { value } = TabsPrimitive.useRootContext();
+  const isActive = value === props.value;
+
   return (
     <TextClassContext.Provider
       value={cn(
-        'text-foreground dark:text-muted-foreground text-sm font-medium',
-        value === props.value && 'dark:text-foreground'
+        'text-muted-foreground text-sm font-medium',
+        isActive && 'text-foreground'
       )}>
       <TabsPrimitive.Trigger
         className={cn(
-          'flex h-[calc(100%-1px)] flex-row items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 shadow-none shadow-black/5',
+          'flex h-9 flex-row items-center justify-center gap-1.5 rounded-md border border-transparent px-2.5 py-1',
           Platform.select({
             web: 'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring inline-flex cursor-default whitespace-nowrap transition-[color,box-shadow] focus-visible:outline-1 focus-visible:ring-[3px] disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0',
           }),
-          props.disabled && 'opacity-50',
-          props.value === value && 'bg-background dark:border-foreground/10 dark:bg-input/30',
+          props.disabled && DISABLED_OPACITY,
+          isActive && cn('bg-background', SURFACE_SHADOW, 'dark:bg-input'),
           className
         )}
         {...props}

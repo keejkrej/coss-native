@@ -1,6 +1,11 @@
 import { Spinner } from '@/registry/nativewind/components/ui/spinner';
 import { TextClassContext } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import {
+  cn,
+  DARK_INPUT_BG,
+  DISABLED_OPACITY,
+  SURFACE_SHADOW,
+} from '@/registry/nativewind/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Platform, Pressable, View } from 'react-native';
 
@@ -8,30 +13,37 @@ const buttonVariants = cva(
   cn(
     'relative shrink-0 flex-row items-center justify-center gap-2 rounded-lg border font-medium',
     Platform.select({
-      web: "focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-offset-background whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      web: "focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-offset-background whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:pointer-events-none [&_svg:not([class*='opacity-'])]:opacity-80 [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
     })
   ),
   {
     variants: {
       variant: {
         default: cn(
-          'border-primary bg-primary active:bg-primary/90 shadow-sm shadow-black/5',
+          'border-primary bg-primary active:bg-primary/90 shadow-primary/24',
+          SURFACE_SHADOW,
           Platform.select({ web: 'hover:bg-primary/90' })
         ),
         destructive: cn(
-          'border-destructive bg-destructive active:bg-destructive/90 shadow-sm shadow-black/5',
+          'border-destructive bg-destructive active:bg-destructive/90 shadow-destructive/24',
+          SURFACE_SHADOW,
           Platform.select({ web: 'hover:bg-destructive/90' })
         ),
         'destructive-outline': cn(
-          'border-input bg-popover text-destructive-foreground active:border-destructive/30 active:bg-destructive/5 shadow-sm shadow-black/5 dark:bg-input/30',
-          Platform.select({ web: 'hover:border-destructive/30 hover:bg-destructive/5' })
+          'border-input bg-popover text-destructive-foreground active:border-destructive/32 active:bg-destructive/4',
+          SURFACE_SHADOW,
+          DARK_INPUT_BG,
+          Platform.select({ web: 'hover:border-destructive/32 hover:bg-destructive/4' })
         ),
         outline: cn(
-          'border-input bg-popover text-foreground active:bg-accent/50 shadow-sm shadow-black/5 dark:bg-input/30',
+          'border-input bg-popover text-foreground active:bg-accent/50',
+          SURFACE_SHADOW,
+          DARK_INPUT_BG,
           Platform.select({ web: 'hover:bg-accent/50 dark:hover:bg-input/64' })
         ),
         secondary: cn(
-          'border-transparent bg-secondary active:bg-secondary/80 shadow-sm shadow-black/5',
+          'border-transparent bg-secondary active:bg-secondary/80',
+          SURFACE_SHADOW,
           Platform.select({ web: 'hover:bg-secondary/90' })
         ),
         ghost: cn(
@@ -117,7 +129,7 @@ function Button({
     <TextClassContext.Provider value={buttonTextVariants({ variant, size })}>
       <Pressable
         className={cn(
-          isDisabled && 'opacity-50',
+          isDisabled && DISABLED_OPACITY,
           loading && 'opacity-80',
           buttonVariants({ variant, size }),
           className

@@ -1,17 +1,17 @@
 import { Text, TextClassContext } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, DARK_INPUT_BG } from '@/registry/nativewind/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { View } from 'react-native';
 
-const alertVariants = cva('relative w-full rounded-xl border px-3.5 py-3', {
+const alertVariants = cva('relative w-full rounded-xl border px-3.5 py-3 text-sm', {
   variants: {
     variant: {
-      default: 'border-border bg-card',
-      error: 'border-destructive/30 bg-destructive/10',
-      info: 'border-info/30 bg-info/10',
-      success: 'border-success/30 bg-success/10',
-      warning: 'border-warning/30 bg-warning/10',
-      destructive: 'border-destructive/30 bg-destructive/10',
+      default: cn('border-border bg-transparent', DARK_INPUT_BG),
+      error: 'border-destructive/32 bg-destructive/4',
+      info: 'border-info/32 bg-info/4',
+      success: 'border-success/32 bg-success/4',
+      warning: 'border-warning/32 bg-warning/4',
+      destructive: 'border-destructive/32 bg-destructive/4',
     },
   },
   defaultVariants: { variant: 'default' },

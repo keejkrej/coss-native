@@ -1,7 +1,11 @@
 import { buttonTextVariants, buttonVariants } from '@/registry/nativewind/components/ui/button';
 import { NativeOnlyAnimatedView } from '@/registry/nativewind/components/ui/native-only-animated-view';
 import { TextClassContext } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import {
+  BACKDROP_OVERLAY,
+  cn,
+  ELEVATED_SHADOW,
+} from '@/registry/nativewind/lib/utils';
 import * as AlertDialogPrimitive from '@rn-primitives/alert-dialog';
 import * as React from 'react';
 import { Platform, View, type ViewProps } from 'react-native';
@@ -21,15 +25,16 @@ function AlertDialogOverlay({
   children,
   ...props
 }: Omit<React.ComponentProps<typeof AlertDialogPrimitive.Overlay>, 'asChild'> & {
-    children?: React.ReactNode;
-  }) {
+  children?: React.ReactNode;
+}) {
   return (
     <FullWindowOverlay>
       <AlertDialogPrimitive.Overlay
         className={cn(
-          'absolute bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center bg-black/50 p-2',
+          'absolute bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center p-2',
+          BACKDROP_OVERLAY,
           Platform.select({
-            web: 'animate-in fade-in-0 fixed',
+            web: 'animate-in fade-in-0 fixed backdrop-blur-sm',
           }),
           className
         )}
@@ -49,14 +54,15 @@ function AlertDialogContent({
   portalHost,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content> & {
-    portalHost?: string;
-  }) {
+  portalHost?: string;
+}) {
   return (
     <AlertDialogPortal hostName={portalHost}>
       <AlertDialogOverlay>
         <AlertDialogPrimitive.Content
           className={cn(
-            'bg-background border-border z-50 flex w-full max-w-[calc(100%-2rem)] flex-col gap-4 rounded-lg border p-6 shadow-lg shadow-black/5 sm:max-w-lg',
+            'bg-popover border-border text-popover-foreground z-50 flex w-full max-w-[calc(100%-2rem)] flex-col gap-4 rounded-2xl border p-6 sm:max-w-lg',
+            ELEVATED_SHADOW,
             Platform.select({
               web: 'animate-in fade-in-0 zoom-in-95 duration-200',
             }),

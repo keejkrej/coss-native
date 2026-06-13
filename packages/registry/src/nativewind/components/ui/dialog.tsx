@@ -1,7 +1,12 @@
+import { Button } from '@/registry/nativewind/components/ui/button';
 import { Icon } from '@/registry/nativewind/components/ui/icon';
 import { NativeOnlyAnimatedView } from '@/registry/nativewind/components/ui/native-only-animated-view';
 import { Text } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import {
+  BACKDROP_OVERLAY,
+  cn,
+  ELEVATED_SHADOW,
+} from '@/registry/nativewind/lib/utils';
 import * as DialogPrimitive from '@rn-primitives/dialog';
 import { X } from 'lucide-react-native';
 import * as React from 'react';
@@ -27,9 +32,10 @@ function DialogBackdrop({
     <FullWindowOverlay>
       <DialogPrimitive.Overlay
         className={cn(
-          'absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-black/50 p-2',
+          'absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center p-2',
+          BACKDROP_OVERLAY,
           Platform.select({
-            web: 'animate-in fade-in-0 fixed cursor-default [&>*]:cursor-auto',
+            web: 'animate-in fade-in-0 fixed cursor-default backdrop-blur-sm [&>*]:cursor-auto',
           }),
           className
         )}
@@ -58,7 +64,8 @@ function DialogPopup({
       <DialogBackdrop>
         <DialogPrimitive.Content
           className={cn(
-            'bg-background border-border z-50 mx-auto flex w-full max-w-[calc(100%-2rem)] flex-col gap-4 rounded-2xl border p-6 shadow-lg shadow-black/5 sm:max-w-lg',
+            'bg-popover border-border text-popover-foreground z-50 mx-auto flex w-full max-w-[calc(100%-2rem)] flex-col gap-4 rounded-2xl border p-6 sm:max-w-lg',
+            ELEVATED_SHADOW,
             Platform.select({
               web: 'animate-in fade-in-0 zoom-in-95 duration-200',
             }),
@@ -66,16 +73,15 @@ function DialogPopup({
           )}
           {...props}>
           <>{children}</>
-          <DialogPrimitive.Close
-            className={cn(
-              'absolute right-4 top-4 rounded opacity-70 active:opacity-100',
-              Platform.select({
-                web: 'ring-offset-background focus:ring-ring hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2',
-              })
-            )}
-            hitSlop={12}>
-            <Icon as={X} className="text-accent-foreground size-4 shrink-0" />
-            <Text className="sr-only">Close</Text>
+          <DialogPrimitive.Close asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-2 top-2"
+              hitSlop={12}>
+              <Icon as={X} className="text-foreground size-4 shrink-0" />
+              <Text className="sr-only">Close</Text>
+            </Button>
           </DialogPrimitive.Close>
         </DialogPrimitive.Content>
       </DialogBackdrop>

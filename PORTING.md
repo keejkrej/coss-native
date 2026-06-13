@@ -17,11 +17,33 @@ Semantic token **names** match coss (`background`, `primary`, `destructive`, `in
 
 Values are converted from coss Tailwind v4 expressions to static HSL channel variables in:
 
+- `packages/registry/src/nativewind/styles/global.css` (distributed via registry)
 - `apps/showcase/global.css`
 - `apps/showcase/tailwind.config.js`
 - `apps/showcase/lib/theme.ts`
 
-Visual parity is approximate; API parity is the goal.
+Dark-mode tokens (secondary/muted/accent/border/input, card/popover lift, muted-foreground) are recomputed from coss `color-mix` / `--alpha()` expressions. Light mode was already close to alpha equivalents.
+
+Shared styling constants live in `packages/registry/src/nativewind/lib/utils.ts` (`DISABLED_OPACITY`, `SURFACE_SHADOW`, `DARK_INPUT_BG`, `BACKDROP_OVERLAY`).
+
+Run `node scripts/audit-visual-parity.mjs` to compare registry components against `../coss`.
+
+## Visual alignment (foundation + core)
+
+The following have been tightened toward coss web visuals:
+
+| Area | Changes |
+|------|---------|
+| **Tokens** | Dark surfaces, semantic foregrounds, card/popover lift, `radius-xl` |
+| **Button** | Colored shadows, `opacity-64`, `/32` dark inputs, semantic border alphas, icon opacity |
+| **Input** | `dark:bg-input/32`, invalid-state rings (web), height alignment |
+| **Badge** | coss sizes (`h-5.5` etc.), `/8`/`/16` semantic tints |
+| **Card** | `text-lg` title, unified `p-6` padding |
+| **Alert** | Transparent default, `/32` borders, `/4` semantic backgrounds |
+| **Checkbox / Switch / Tabs** | coss sizes, `opacity-64`, active tab shadow |
+| **Dialog / AlertDialog / Sheet** | `bg-black/32` backdrop, popover surface, ghost close button, `rounded-2xl` |
+
+Remaining components (select, menu, textarea, toggle, etc.) still use pre-audit styling. See audit script output.
 
 ## Styling gaps (cannot port 1:1)
 
@@ -29,6 +51,15 @@ Visual parity is approximate; API parity is the goal.
 - `inset-shadow`, `not-dark:bg-clip-padding`
 - `pointer-coarse:after:min-h-11` → use explicit heights or `hitSlop`
 - CSS `data-*` descendant selectors (`in-[[data-slot=...]]`)
+- Tabs sliding `Indicator` animation (active tab uses static shadow approximation)
+- `CardFrame`, `CardAction`, `CardPanel` compound parts (not yet exported)
+- Tabs `variant="underline"` API
+
+## Deferred visual work
+
+- Remaining 43+ primitives not in the core pass (select, menu, popover, table, sidebar, etc.)
+- Particle-equivalent showcase previews for all components
+- Full pseudo-depth parity (`before:` inset shadows → `SURFACE_SHADOW` approximation only)
 
 ## RN-specific patterns
 
