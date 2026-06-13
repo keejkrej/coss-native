@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "title": "Pagination",
+  "description": "Page navigation controls.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/text.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/button.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/pagination.tsx",
+      "content": "import { Button, buttonVariants } from '@/registry/nativewind/components/ui/button';\nimport { Icon } from '@/registry/nativewind/components/ui/icon';\nimport { Text } from '@/registry/nativewind/components/ui/text';\nimport { cn } from '@/registry/nativewind/lib/utils';\nimport { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react-native';\nimport { Pressable, View } from 'react-native';\n\nfunction Pagination({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View\n      accessibilityRole=\"none\"\n      className={cn('mx-auto w-full flex-row justify-center', className)}\n      {...props}\n    />\n  );\n}\n\nfunction PaginationContent({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('flex-row items-center gap-1', className)} {...props} />;\n}\n\nfunction PaginationItem({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={className} {...props} />;\n}\n\ntype PaginationLinkProps = React.ComponentProps<typeof Pressable> & {\n  isActive?: boolean;\n  size?: 'default' | 'icon' | 'sm' | 'lg';\n};\n\nfunction PaginationLink({\n  className,\n  isActive,\n  size = 'icon',\n  children,\n  ...props\n}: PaginationLinkProps) {\n  return (\n    <Pressable\n      className={cn(\n        buttonVariants({ variant: isActive ? 'outline' : 'ghost', size }),\n        className\n      )}\n      accessibilityState={{ selected: isActive }}\n      {...props}>\n      {typeof children === 'string' ? <Text>{children}</Text> : children}\n    </Pressable>\n  );\n}\n\nfunction PaginationPrevious({ className, ...props }: React.ComponentProps<typeof Button>) {\n  return (\n    <Button variant=\"ghost\" size=\"default\" className={cn('gap-1 px-2.5', className)} {...props}>\n      <Icon as={ChevronLeft} className=\"size-4\" />\n      <Text>Previous</Text>\n    </Button>\n  );\n}\n\nfunction PaginationNext({ className, ...props }: React.ComponentProps<typeof Button>) {\n  return (\n    <Button variant=\"ghost\" size=\"default\" className={cn('gap-1 px-2.5', className)} {...props}>\n      <Text>Next</Text>\n      <Icon as={ChevronRight} className=\"size-4\" />\n    </Button>\n  );\n}\n\nfunction PaginationEllipsis({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View className={cn('flex size-9 items-center justify-center', className)} {...props}>\n      <Icon as={MoreHorizontal} className=\"size-4\" />\n    </View>\n  );\n}\n\nexport {\n  Pagination,\n  PaginationContent,\n  PaginationEllipsis,\n  PaginationItem,\n  PaginationLink,\n  PaginationNext,\n  PaginationPrevious,\n};\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

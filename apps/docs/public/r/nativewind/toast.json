@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast",
+  "title": "Toast",
+  "description": "Toast notifications.",
+  "dependencies": [
+    "@rn-primitives/toast"
+  ],
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/text.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/toast.tsx",
+      "content": "import { Text } from '@/registry/nativewind/components/ui/text';\nimport { cn } from '@/registry/nativewind/lib/utils';\nimport * as ToastPrimitive from '@rn-primitives/toast';\nimport { Platform, View } from 'react-native';\n\nconst Toast = ToastPrimitive.Root;\n\nfunction ToastProvider({ children }: { children: React.ReactNode }) {\n  return <View className=\"relative flex-1\">{children}</View>;\n}\n\nfunction ToastViewport({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View\n      className={cn(\n        'absolute bottom-0 z-50 w-full flex-col gap-2 p-4',\n        Platform.select({ web: 'fixed' }),\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction ToastTitle({ className, ...props }: React.ComponentProps<typeof ToastPrimitive.Title>) {\n  return (\n    <ToastPrimitive.Title\n      className={cn('text-foreground text-sm font-semibold', className)}\n      {...props}\n    />\n  );\n}\n\nfunction ToastDescription({\n  className,\n  ...props\n}: React.ComponentProps<typeof ToastPrimitive.Description>) {\n  return (\n    <ToastPrimitive.Description\n      className={cn('text-muted-foreground text-sm', className)}\n      {...props}\n    />\n  );\n}\n\nfunction ToastClose({ className, ...props }: React.ComponentProps<typeof ToastPrimitive.Close>) {\n  return (\n    <ToastPrimitive.Close\n      className={cn('absolute right-2 top-2 rounded opacity-70 active:opacity-100', className)}\n      {...props}\n    />\n  );\n}\n\nfunction ToastAction({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('mt-2 flex-row gap-2', className)} {...props} />;\n}\n\nexport { Toast, ToastAction, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

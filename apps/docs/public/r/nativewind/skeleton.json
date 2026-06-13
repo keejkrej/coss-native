@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "title": "Skeleton",
+  "description": "Placeholder while content is loading.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/skeleton.tsx",
+      "content": "import { cn } from '@/registry/nativewind/lib/utils';\nimport { View } from 'react-native';\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('bg-muted animate-pulse rounded-md', className)} {...props} />;\n}\n\nexport { Skeleton };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

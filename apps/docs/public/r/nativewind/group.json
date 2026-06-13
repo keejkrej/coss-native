@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "group",
+  "title": "Group",
+  "description": "Horizontal or vertical group.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/text.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/separator.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/group.tsx",
+      "content": "import { Separator } from '@/registry/nativewind/components/ui/separator';\nimport { Text } from '@/registry/nativewind/components/ui/text';\nimport { cn } from '@/registry/nativewind/lib/utils';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { View } from 'react-native';\n\nconst groupVariants = cva('flex', {\n  variants: {\n    orientation: {\n      horizontal: 'flex-row items-center',\n      vertical: 'flex-col items-stretch',\n    },\n  },\n  defaultVariants: { orientation: 'horizontal' },\n});\n\nfunction Group({\n  className,\n  orientation,\n  ...props\n}: React.ComponentProps<typeof View> & VariantProps<typeof groupVariants>) {\n  return <View className={cn(groupVariants({ orientation }), className)} {...props} />;\n}\n\nfunction GroupText({ className, ...props }: React.ComponentProps<typeof Text>) {\n  return <Text className={cn('text-sm', className)} {...props} />;\n}\n\nfunction GroupSeparator({ className, ...props }: React.ComponentProps<typeof Separator>) {\n  return <Separator className={className} {...props} />;\n}\n\nexport { Group, GroupSeparator, GroupText, groupVariants };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

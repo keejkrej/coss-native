@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fieldset",
+  "title": "Fieldset",
+  "description": "Grouped form fields.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/text.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/fieldset.tsx",
+      "content": "import { Text } from '@/registry/nativewind/components/ui/text';\nimport { cn } from '@/registry/nativewind/lib/utils';\nimport { View } from 'react-native';\n\nfunction Fieldset({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('flex flex-col gap-4', className)} {...props} />;\n}\n\nfunction FieldsetLegend({ className, ...props }: React.ComponentProps<typeof Text>) {\n  return <Text className={cn('text-sm font-medium', className)} {...props} />;\n}\n\nexport { Fieldset, FieldsetLegend };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

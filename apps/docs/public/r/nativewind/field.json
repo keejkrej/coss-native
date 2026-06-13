@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "title": "Field",
+  "description": "Form field with label and error.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/text.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/label.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/field.tsx",
+      "content": "import { Label } from '@/registry/nativewind/components/ui/label';\nimport { Text } from '@/registry/nativewind/components/ui/text';\nimport { cn } from '@/registry/nativewind/lib/utils';\nimport { View } from 'react-native';\n\nfunction Field({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('flex flex-col gap-2', className)} {...props} />;\n}\n\nfunction FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>) {\n  return <Label className={className} {...props} />;\n}\n\nfunction FieldDescription({ className, ...props }: React.ComponentProps<typeof Text>) {\n  return <Text className={cn('text-muted-foreground text-sm', className)} {...props} />;\n}\n\nfunction FieldError({ className, ...props }: React.ComponentProps<typeof Text>) {\n  return <Text className={cn('text-destructive text-sm', className)} {...props} />;\n}\n\nfunction FieldControl({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={className} {...props} />;\n}\n\nfunction FieldItem({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('flex flex-col gap-2', className)} {...props} />;\n}\n\nfunction FieldValidity({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={className} {...props} />;\n}\n\nexport {\n  Field,\n  FieldControl,\n  FieldDescription,\n  FieldError,\n  FieldItem,\n  FieldLabel,\n  FieldValidity,\n};\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

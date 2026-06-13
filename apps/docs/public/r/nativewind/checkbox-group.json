@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-group",
+  "title": "Checkbox Group",
+  "description": "Group of checkboxes.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/checkbox.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/checkbox-group.tsx",
+      "content": "import { cn } from '@/registry/nativewind/lib/utils';\nimport { View } from 'react-native';\n\nfunction CheckboxGroup({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View className={cn('flex flex-col items-start gap-3', className)} {...props} />\n  );\n}\n\nexport { CheckboxGroup };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "frame",
+  "title": "Frame",
+  "description": "Framed content container.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/text.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/frame.tsx",
+      "content": "import { Text } from '@/registry/nativewind/components/ui/text';\nimport { cn } from '@/registry/nativewind/lib/utils';\nimport { View } from 'react-native';\n\nfunction Frame({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View className={cn('bg-muted/70 flex flex-col rounded-2xl p-1', className)} {...props} />\n  );\n}\n\nfunction FramePanel({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View\n      className={cn(\n        'border-border bg-background rounded-xl border p-5 shadow-sm shadow-black/5',\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction FrameHeader({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('flex flex-col px-5 py-4', className)} {...props} />;\n}\n\nfunction FrameTitle({ className, ...props }: React.ComponentProps<typeof Text>) {\n  return <Text className={cn('text-sm font-semibold', className)} {...props} />;\n}\n\nfunction FrameDescription({ className, ...props }: React.ComponentProps<typeof Text>) {\n  return <Text className={cn('text-muted-foreground text-sm', className)} {...props} />;\n}\n\nfunction FrameFooter({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('flex flex-row items-center px-5 py-4', className)} {...props} />;\n}\n\nexport { Frame, FrameDescription, FrameFooter, FrameHeader, FramePanel, FrameTitle };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

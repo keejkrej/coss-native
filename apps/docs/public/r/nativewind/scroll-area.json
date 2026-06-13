@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "title": "Scroll Area",
+  "description": "Scrollable container.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/scroll-area.tsx",
+      "content": "import { cn } from '@/registry/nativewind/lib/utils';\nimport { ScrollView, View } from 'react-native';\n\nfunction ScrollArea({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof ScrollView>) {\n  return (\n    <ScrollView className={cn('relative', className)} {...props}>\n      {children}\n    </ScrollView>\n  );\n}\n\nfunction ScrollBar({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('bg-border hidden w-2 rounded-full', className)} {...props} />;\n}\n\nexport { ScrollArea, ScrollBar };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

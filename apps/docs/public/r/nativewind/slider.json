@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "title": "Slider",
+  "description": "Range slider control.",
+  "dependencies": [
+    "@rn-primitives/slider"
+  ],
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/slider.tsx",
+      "content": "import { cn } from '@/registry/nativewind/lib/utils';\nimport * as SliderPrimitive from '@rn-primitives/slider';\nimport { Platform, View } from 'react-native';\n\nfunction Slider({\n  className,\n  ...props\n}: React.ComponentProps<typeof SliderPrimitive.Root>) {\n  return (\n    <SliderPrimitive.Root\n      className={cn('relative w-full flex-row items-center', className)}\n      {...props}>\n      <SliderPrimitive.Track className=\"bg-input relative h-1.5 w-full grow overflow-hidden rounded-full\">\n        <SliderPrimitive.Range className=\"bg-primary absolute h-full\" />\n      </SliderPrimitive.Track>\n      <SliderPrimitive.Thumb\n        className={cn(\n          'border-input bg-background block size-4 rounded-full border shadow-sm shadow-black/5',\n          Platform.select({ web: 'focus-visible:ring-ring focus-visible:ring-[3px]' })\n        )}\n      />\n    </SliderPrimitive.Root>\n  );\n}\n\nfunction SliderValue({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={className} {...props} />;\n}\n\nexport { Slider, SliderValue };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

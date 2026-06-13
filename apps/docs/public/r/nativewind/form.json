@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form",
+  "title": "Form",
+  "description": "Form container.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/form.tsx",
+      "content": "import { cn } from '@/registry/nativewind/lib/utils';\nimport { View } from 'react-native';\n\nfunction Form({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('flex flex-col gap-6', className)} {...props} />;\n}\n\nexport { Form };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

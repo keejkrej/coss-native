@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "title": "Breadcrumb",
+  "description": "Navigation breadcrumbs.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/text.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/breadcrumb.tsx",
+      "content": "import { Icon } from '@/registry/nativewind/components/ui/icon';\nimport { Text } from '@/registry/nativewind/components/ui/text';\nimport { cn } from '@/registry/nativewind/lib/utils';\nimport { ChevronRight, MoreHorizontal } from 'lucide-react-native';\nimport { Platform, Pressable, View } from 'react-native';\n\nfunction Breadcrumb({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View accessibilityRole=\"none\" className={cn(className)} {...props} />\n  );\n}\n\nfunction BreadcrumbList({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View className={cn('flex-row flex-wrap items-center gap-1.5', className)} {...props} />\n  );\n}\n\nfunction BreadcrumbItem({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('flex-row items-center gap-1.5', className)} {...props} />;\n}\n\nfunction BreadcrumbLink({\n  className,\n  ...props\n}: React.ComponentProps<typeof Pressable>) {\n  return (\n    <Pressable\n      className={cn(\n        'active:opacity-70',\n        Platform.select({ web: 'hover:opacity-80' }),\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction BreadcrumbPage({ className, ...props }: React.ComponentProps<typeof Text>) {\n  return <Text className={cn('text-foreground font-normal', className)} {...props} />;\n}\n\nfunction BreadcrumbSeparator({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View className={cn('flex-row items-center', className)} {...props}>\n      <Icon as={ChevronRight} className=\"text-muted-foreground size-3.5\" />\n    </View>\n  );\n}\n\nfunction BreadcrumbEllipsis({ className, ...props }: React.ComponentProps<typeof View>) {\n  return (\n    <View className={cn('flex size-9 items-center justify-center', className)} {...props}>\n      <Icon as={MoreHorizontal} className=\"text-foreground size-4\" />\n    </View>\n  );\n}\n\nexport {\n  Breadcrumb,\n  BreadcrumbEllipsis,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n};\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

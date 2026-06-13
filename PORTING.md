@@ -28,7 +28,6 @@ Visual parity is approximate; API parity is the goal.
 - `before:` / `after:` pseudo-element shadows and inset shadows
 - `inset-shadow`, `not-dark:bg-clip-padding`
 - `pointer-coarse:after:min-h-11` → use explicit heights or `hitSlop`
-- `bottomStickOnMobile` dialog sheet behavior → defer to future Sheet/Drawer port
 - CSS `data-*` descendant selectors (`in-[[data-slot=...]]`)
 
 ## RN-specific patterns
@@ -58,14 +57,32 @@ coss uses `DialogPopup` and `DialogBackdrop`. coss-native exports both names plu
 - `DialogPopup` = `DialogContent`
 - `DialogBackdrop` = `DialogOverlay`
 
-## MVP scope (implemented)
+## Implemented components (48 registry UI items)
 
-- Text, Button, Input, Card, Badge, Separator, Switch, Checkbox, Dialog, Select
-- Infrastructure: icon, spinner, native-only-animated-view, utils
+**MVP:** Text, Button, Input, Card, Badge, Separator, Switch, Checkbox, Dialog, Select
 
-## Deferred (43 remaining primitives)
+**Phase 1 — Presentational:** Skeleton, Alert, Label, Avatar, Empty, Kbd, Frame, Breadcrumb, Pagination, Checkbox Group
 
-Accordion, Alert, Alert Dialog, Autocomplete, Avatar, Breadcrumb, Calendar, Checkbox Group, Collapsible, Combobox, Command, Drawer, Empty, Field, Fieldset, Form, Frame, Group, Input Group, Kbd, Label, Menu, Meter, Number Field, OTP Field, Pagination, Popover, Preview Card, Progress, Radio Group, Scroll Area, Sheet, Sidebar, Skeleton, Slider, Table, Tabs, Textarea, Toast, Toggle, Toggle Group, Toolbar, Tooltip
+**Phase 2 — Interactive:** Textarea, Radio Group, Toggle, Toggle Group, Slider, Progress, Accordion, Collapsible, Tabs, Alert Dialog, Tooltip, Popover, Preview Card, Toolbar
+
+**Phase 3 — Composition:** Field, Fieldset, Form, Group, Input Group, Meter, Scroll Area, Table, Sheet, Menu, Toast
+
+**Infrastructure:** icon, spinner, native-only-animated-view, utils, global-css
+
+## Deferred (mobile-paradigm gaps)
+
+These 8 coss web primitives require custom native libraries or redesign before porting:
+
+| Component | Blocker | Future direction |
+|-----------|---------|------------------|
+| drawer | 500+ LOC, embedded menu, swipe gestures | `@gorhom/bottom-sheet` + ported menu |
+| sidebar | cookies, keyboard shortcuts, 20+ subcomponents | Sheet-based mobile nav + AsyncStorage |
+| calendar | `react-day-picker` | `react-native-calendars` or native date picker |
+| autocomplete | no RN primitive | custom list + portal |
+| combobox | no RN primitive | builds on autocomplete |
+| command | no RN primitive | custom list + portal; builds on autocomplete |
+| otp-field | no RN primitive | segmented TextInput pattern |
+| number-field | no RN primitive | stepper + numeric input pattern |
 
 ## Particles
 

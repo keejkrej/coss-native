@@ -276,6 +276,632 @@
         "@rn-primitives/portal",
         "react-native-screens"
       ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Placeholder while content is loading.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Callout for user attention.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "icon"
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Accessible label for controls.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@rn-primitives/label"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Image with fallback.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@rn-primitives/avatar"
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty state placeholder.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text"
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keyboard key display.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text"
+      ]
+    },
+    {
+      "name": "frame",
+      "type": "registry:ui",
+      "title": "Frame",
+      "description": "Framed content container.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/frame.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Navigation breadcrumbs.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text"
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Page navigation controls.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "button"
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "Checkbox Group",
+      "description": "Group of checkboxes.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/checkbox-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "checkbox"
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multiline text input.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Single-select radio buttons.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@rn-primitives/radio-group"
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Two-state toggle button.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "icon"
+      ],
+      "dependencies": [
+        "@rn-primitives/toggle"
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Group of toggle buttons.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "icon",
+        "toggle"
+      ],
+      "dependencies": [
+        "@rn-primitives/toggle-group"
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Range slider control.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@rn-primitives/slider"
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Task completion indicator.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@rn-primitives/progress"
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Expandable sections.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "icon"
+      ],
+      "dependencies": [
+        "@rn-primitives/accordion"
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Expandable content.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@rn-primitives/collapsible"
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabbed content panels.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text"
+      ],
+      "dependencies": [
+        "@rn-primitives/tabs"
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Modal requiring a response.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "button",
+        "native-only-animated-view"
+      ],
+      "dependencies": [
+        "@rn-primitives/alert-dialog",
+        "@rn-primitives/portal"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Contextual popup on focus/hover.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "native-only-animated-view"
+      ],
+      "dependencies": [
+        "@rn-primitives/tooltip"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Rich content in a portal.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "native-only-animated-view"
+      ],
+      "dependencies": [
+        "@rn-primitives/popover",
+        "@rn-primitives/portal"
+      ]
+    },
+    {
+      "name": "preview-card",
+      "type": "registry:ui",
+      "title": "Preview Card",
+      "description": "Preview content on hover/focus.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/preview-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "native-only-animated-view"
+      ],
+      "dependencies": [
+        "@rn-primitives/hover-card"
+      ]
+    },
+    {
+      "name": "toolbar",
+      "type": "registry:ui",
+      "title": "Toolbar",
+      "description": "Toolbar with buttons and inputs.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/toolbar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@rn-primitives/toolbar"
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Form field with label and error.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "label"
+      ]
+    },
+    {
+      "name": "fieldset",
+      "type": "registry:ui",
+      "title": "Fieldset",
+      "description": "Grouped form fields.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/fieldset.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text"
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "Form container.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "group",
+      "type": "registry:ui",
+      "title": "Group",
+      "description": "Horizontal or vertical group.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "separator"
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Input with addons.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "input",
+        "textarea"
+      ]
+    },
+    {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "Meter gauge indicator.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/meter.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text"
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Scrollable container.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Data table.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text"
+      ],
+      "dependencies": [
+        "@rn-primitives/table"
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Slide-over panel dialog.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "icon",
+        "native-only-animated-view",
+        "dialog"
+      ]
+    },
+    {
+      "name": "menu",
+      "type": "registry:ui",
+      "title": "Menu",
+      "description": "Dropdown menu.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text",
+        "icon",
+        "native-only-animated-view"
+      ],
+      "dependencies": [
+        "@rn-primitives/dropdown-menu",
+        "@rn-primitives/portal"
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Toast notifications.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "text"
+      ],
+      "dependencies": [
+        "@rn-primitives/toast"
+      ]
     }
   ]
 }

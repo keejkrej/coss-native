@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "title": "Sheet",
+  "description": "Slide-over panel dialog.",
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/text.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/icon.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/native-only-animated-view.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/dialog.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/sheet.tsx",
+      "content": "import {\n  Dialog,\n  DialogBackdrop,\n  DialogClose,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogPopup,\n  DialogPortal,\n  DialogTitle,\n  DialogTrigger,\n} from '@/registry/nativewind/components/ui/dialog';\nimport { cn } from '@/registry/nativewind/lib/utils';\nimport { Platform, View } from 'react-native';\n\nconst Sheet = Dialog;\nconst SheetClose = DialogClose;\nconst SheetPortal = DialogPortal;\nconst SheetTrigger = DialogTrigger;\nconst SheetBackdrop = DialogBackdrop;\nconst SheetPopup = DialogPopup;\nconst SheetHeader = DialogHeader;\nconst SheetFooter = DialogFooter;\nconst SheetTitle = DialogTitle;\nconst SheetDescription = DialogDescription;\n\nfunction SheetViewport({\n  className,\n  side = 'bottom',\n  ...props\n}: React.ComponentProps<typeof View> & { side?: 'top' | 'bottom' | 'left' | 'right' }) {\n  return (\n    <View\n      className={cn(\n        'flex-1 items-center justify-center',\n        side === 'bottom' && 'justify-end',\n        side === 'top' && 'justify-start',\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction SheetPanel({ className, ...props }: React.ComponentProps<typeof View>) {\n  return <View className={cn('flex flex-col gap-4', className)} {...props} />;\n}\n\nfunction SheetContent({\n  className,\n  side = 'bottom',\n  ...props\n}: React.ComponentProps<typeof DialogPopup> & { side?: 'top' | 'bottom' | 'left' | 'right' }) {\n  return (\n    <DialogPopup\n      className={cn(\n        Platform.select({\n          native:\n            side === 'bottom'\n              ? 'mt-auto max-w-full rounded-b-none rounded-t-2xl'\n              : 'max-w-full',\n        }),\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Sheet,\n  SheetBackdrop,\n  SheetClose,\n  SheetContent,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetPanel,\n  SheetPopup,\n  SheetPortal,\n  SheetTitle,\n  SheetTrigger,\n  SheetViewport,\n};\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

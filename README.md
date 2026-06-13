@@ -44,20 +44,20 @@ npx shadcn@latest add \
 
 When `@coss/native-cli` is published, `npx @coss/native-cli add button text` will work. Until then, use the commands above.
 
-## MVP components
+## Components (48 registry UI items)
 
-| Component | Primitive |
-|-----------|-----------|
-| Text | Foundation (TextClassContext) |
-| Button | Pressable + CVA (coss variants/sizes) |
-| Input | TextInput |
-| Card | View composition |
-| Badge | View + CVA |
-| Separator | @rn-primitives/separator |
-| Switch | @rn-primitives/switch |
-| Checkbox | @rn-primitives/checkbox |
-| Dialog | @rn-primitives/dialog |
-| Select | @rn-primitives/select |
+| Category | Components |
+|----------|------------|
+| Foundation | Text, Icon, Spinner, Utils |
+| Actions | Button, Toggle, Toggle Group, Toolbar |
+| Forms | Input, Textarea, Label, Checkbox, Checkbox Group, Radio Group, Switch, Slider, Field, Fieldset, Form, Group, Input Group, Meter |
+| Data display | Text, Badge, Card, Avatar, Table, Progress, Skeleton, Kbd, Empty |
+| Feedback | Alert, Toast, Tooltip |
+| Overlays | Dialog, Sheet, Alert Dialog, Popover, Preview Card, Menu, Select |
+| Layout | Separator, Frame, Scroll Area, Group |
+| Navigation | Tabs, Accordion, Collapsible, Breadcrumb, Pagination |
+
+**Deferred:** drawer, sidebar, calendar, autocomplete, combobox, command, otp-field, number-field — see [PORTING.md](PORTING.md).
 
 Shared infrastructure: `icon`, `spinner`, `native-only-animated-view`, `utils`.
 
