@@ -1,4 +1,9 @@
-import { cn } from '@/registry/nativewind/lib/utils';
+import {
+  cn,
+  DARK_INPUT_BG,
+  DISABLED_OPACITY,
+  SURFACE_SHADOW,
+} from '@/registry/nativewind/lib/utils';
 import * as RadioGroupPrimitive from '@rn-primitives/radio-group';
 import { Platform } from 'react-native';
 
@@ -16,11 +21,17 @@ function RadioGroupItem({
   return (
     <RadioGroupPrimitive.Item
       className={cn(
-        'border-input dark:bg-input/30 aspect-square size-4 shrink-0 items-center justify-center rounded-full border shadow-sm shadow-black/5',
+        'border-input bg-background size-4.5 shrink-0 items-center justify-center rounded-full border',
+        SURFACE_SHADOW,
+        DARK_INPUT_BG,
         Platform.select({
-          web: 'focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive outline-none transition-all focus-visible:ring-[3px] disabled:cursor-not-allowed',
+          web: cn(
+            'focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-offset-background outline-none focus-visible:ring-2 focus-visible:ring-offset-1',
+            'aria-invalid:border-destructive/36 focus-visible:aria-invalid:border-destructive/64 focus-visible:aria-invalid:ring-destructive/48',
+            'dark:aria-invalid:ring-destructive/24 disabled:cursor-not-allowed'
+          ),
         }),
-        props.disabled && 'opacity-50',
+        props.disabled && DISABLED_OPACITY,
         className
       )}
       {...props}>

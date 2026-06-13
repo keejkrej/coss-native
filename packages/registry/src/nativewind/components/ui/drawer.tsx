@@ -56,7 +56,7 @@ function DrawerCreateHandle() {
 }
 
 function NativeDrawerBackdrop(props: React.ComponentProps<typeof BottomSheetBackdrop>) {
-  return <BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} opacity={0.5} {...props} />;
+  return <BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} opacity={0.32} {...props} />;
 }
 
 function Drawer({

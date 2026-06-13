@@ -43,7 +43,20 @@ The following have been tightened toward coss web visuals:
 | **Checkbox / Switch / Tabs** | coss sizes, `opacity-64`, active tab shadow |
 | **Dialog / AlertDialog / Sheet** | `bg-black/32` backdrop, popover surface, ghost close button, `rounded-2xl` |
 
-Remaining components (select, menu, textarea, toggle, etc.) still use pre-audit styling. See audit script output.
+Remaining components (popover, sidebar, table, etc.) still use pre-audit styling. See audit script output.
+
+## Visual alignment (form + toggles)
+
+| Area | Changes |
+|------|---------|
+| **Select** | `selectTriggerVariants` CVA, invalid rings, icon opacity, item min-heights |
+| **Textarea** | Input-style wrapper, `rounded-lg`, shared constants |
+| **Radio group** | `size-4.5`, `DARK_INPUT_BG`, invalid rings |
+| **Toggle / Toggle group** | `rounded-lg`, pressed `bg-input/64`, outline `DARK_INPUT_BG` |
+| **Menu** | `ELEVATED_SHADOW`, `rounded-lg` popup, destructive text-only variant, item min-heights |
+| **Label / Accordion** | `opacity-64` disabled |
+| **Input group / Number field / OTP field** | Shared surface constants |
+| **Drawer** | Backdrop opacity `0.32` |
 
 ## Styling gaps (cannot port 1:1)
 
@@ -57,7 +70,7 @@ Remaining components (select, menu, textarea, toggle, etc.) still use pre-audit 
 
 ## Deferred visual work
 
-- Remaining 43+ primitives not in the core pass (select, menu, popover, table, sidebar, etc.)
+- Remaining overlays and layout primitives (popover, tooltip, command, sidebar, table, etc.)
 - Particle-equivalent showcase previews for all components
 - Full pseudo-depth parity (`before:` inset shadows → `SURFACE_SHADOW` approximation only)
 

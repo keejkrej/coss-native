@@ -1,4 +1,4 @@
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, DISABLED_OPACITY } from '@/registry/nativewind/lib/utils';
 import * as LabelPrimitive from '@rn-primitives/label';
 import { Platform } from 'react-native';
 
@@ -16,9 +16,9 @@ function Label({
       className={cn(
         'flex flex-row items-center gap-2',
         Platform.select({
-          web: 'cursor-default leading-none peer-disabled:opacity-50',
+          web: 'cursor-default leading-none peer-disabled:opacity-64',
         }),
-        disabled && 'opacity-50'
+        disabled && DISABLED_OPACITY
       )}
       disabled={disabled}
       onPress={onPress}

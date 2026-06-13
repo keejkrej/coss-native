@@ -1,8 +1,15 @@
 import { Icon } from '@/registry/nativewind/components/ui/icon';
 import { NativeOnlyAnimatedView } from '@/registry/nativewind/components/ui/native-only-animated-view';
 import { TextClassContext } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import {
+  cn,
+  DARK_INPUT_BG,
+  DISABLED_OPACITY,
+  ELEVATED_SHADOW,
+  SURFACE_SHADOW,
+} from '@/registry/nativewind/lib/utils';
 import * as SelectPrimitive from '@rn-primitives/select';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { Check, ChevronDown, ChevronDownIcon, ChevronUpIcon } from 'lucide-react-native';
 import * as React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
@@ -14,6 +21,36 @@ type Option = SelectPrimitive.Option;
 const Select = SelectPrimitive.Root;
 const SelectGroup = SelectPrimitive.Group;
 
+const selectTriggerVariants = cva(
+  cn(
+    'border-input bg-background flex min-h-9 w-full min-w-36 flex-row items-center justify-between gap-2 rounded-lg border px-3 text-base text-foreground',
+    SURFACE_SHADOW,
+    DARK_INPUT_BG,
+    Platform.select({
+      web: cn(
+        'focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/25 whitespace-nowrap text-sm outline-none',
+        'aria-invalid:border-destructive/36 focus-visible:aria-invalid:border-destructive/64 focus-visible:aria-invalid:ring-destructive/16',
+        'dark:aria-invalid:ring-destructive/24 disabled:cursor-not-allowed',
+        "[&_svg:not([class*='opacity-'])]:opacity-80 [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0"
+      ),
+    })
+  ),
+  {
+    variants: {
+      size: {
+        default: 'min-h-9 sm:min-h-8',
+        lg: 'min-h-10 sm:min-h-9',
+        sm: 'min-h-8 gap-1.5 px-2.5 sm:min-h-7',
+      },
+    },
+    defaultVariants: {
+      size: 'default',
+    },
+  }
+);
+
+const selectTriggerIconClassName = 'text-muted-foreground size-4.5 opacity-80 sm:size-4';
+
 function SelectValue({
   className,
   ...props
@@ -24,7 +61,7 @@ function SelectValue({
   return (
     <SelectPrimitive.Value
       className={cn(
-        'text-foreground line-clamp-1 flex flex-row items-center gap-2 text-sm',
+        'text-foreground line-clamp-1 flex flex-1 flex-row items-center gap-2 text-sm',
         !value && 'text-muted-foreground',
         className
       )}
@@ -38,25 +75,20 @@ function SelectTrigger({
   children,
   size = 'default',
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
-  children?: React.ReactNode;
-  size?: 'default' | 'sm' | 'lg';
-}) {
+}: React.ComponentProps<typeof SelectPrimitive.Trigger> &
+  VariantProps<typeof selectTriggerVariants> & {
+    children?: React.ReactNode;
+  }) {
   return (
     <SelectPrimitive.Trigger
       className={cn(
-        'border-input bg-background dark:bg-input/30 dark:active:bg-input/50 flex h-9 flex-row items-center justify-between gap-2 rounded-lg border px-3 shadow-sm shadow-black/5',
-        Platform.select({
-          web: 'focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive w-fit whitespace-nowrap text-sm outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:shrink-0',
-        }),
-        props.disabled && 'opacity-50',
-        size === 'sm' && 'h-8',
-        size === 'lg' && 'h-10',
+        selectTriggerVariants({ size }),
+        props.disabled && DISABLED_OPACITY,
         className
       )}
       {...props}>
       <>{children}</>
-      <Icon as={ChevronDown} aria-hidden={true} className="text-muted-foreground size-4" />
+      <Icon as={ChevronDown} aria-hidden={true} className={selectTriggerIconClassName} />
     </SelectPrimitive.Trigger>
   );
 }
@@ -81,7 +113,8 @@ function SelectContent({
             <NativeOnlyAnimatedView className="z-50" entering={FadeIn} exiting={FadeOut}>
               <SelectPrimitive.Content
                 className={cn(
-                  'bg-popover border-border relative z-50 min-w-[8rem] rounded-lg border shadow-md shadow-black/5',
+                  'bg-popover border-border relative z-50 min-w-[8rem] rounded-lg border',
+                  ELEVATED_SHADOW,
                   Platform.select({
                     web: cn(
                       'animate-in fade-in-0 zoom-in-95 max-h-52 overflow-y-auto overflow-x-hidden',
@@ -144,11 +177,11 @@ function SelectItem({
   return (
     <SelectPrimitive.Item
       className={cn(
-        'active:bg-accent group relative flex w-full flex-row items-center gap-2 rounded-sm py-2 pl-2 pr-8 sm:py-1.5',
+        'active:bg-accent group relative flex min-h-8 w-full flex-row items-center gap-2 rounded-sm py-2 pl-2 pr-8 sm:min-h-7 sm:py-1.5',
         Platform.select({
           web: 'focus:bg-accent focus:text-accent-foreground cursor-default outline-none data-[disabled]:pointer-events-none [&_svg]:pointer-events-none',
         }),
-        props.disabled && 'opacity-50',
+        props.disabled && DISABLED_OPACITY,
         className
       )}
       {...props}>
@@ -221,5 +254,7 @@ export {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
+  selectTriggerIconClassName,
+  selectTriggerVariants,
   type Option,
 };

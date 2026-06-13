@@ -1,14 +1,16 @@
 import { Input } from '@/registry/nativewind/components/ui/input';
 import { Text } from '@/registry/nativewind/components/ui/text';
 import { Textarea } from '@/registry/nativewind/components/ui/textarea';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, DARK_INPUT_BG, SURFACE_SHADOW } from '@/registry/nativewind/lib/utils';
 import { View } from 'react-native';
 
 function InputGroup({ className, ...props }: React.ComponentProps<typeof View>) {
   return (
     <View
       className={cn(
-        'border-input bg-background flex w-full flex-row items-center overflow-hidden rounded-lg border shadow-sm shadow-black/5',
+        'border-input bg-background flex w-full flex-row items-center overflow-hidden rounded-lg border',
+        SURFACE_SHADOW,
+        DARK_INPUT_BG,
         className
       )}
       {...props}
@@ -33,9 +35,10 @@ function InputGroupInput({ className, unstyled = true, ...props }: React.Compone
 
 function InputGroupTextarea({
   className,
+  unstyled = true,
   ...props
 }: React.ComponentProps<typeof Textarea>) {
-  return <Textarea className={cn('min-h-20 flex-1 border-0', className)} {...props} />;
+  return <Textarea unstyled className={cn('min-h-20 flex-1 border-0', className)} {...props} />;
 }
 
 export {

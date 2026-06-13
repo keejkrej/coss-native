@@ -34,4 +34,53 @@ function SelectPreview() {
   );
 }
 
-export const selectPreviews = [{ name: 'Default', component: SelectPreview }];
+function SelectSizesPreview() {
+  const [value, setValue] = React.useState<Option | undefined>();
+  return (
+    <View className="w-full max-w-sm gap-3">
+      <Select value={value} onValueChange={setValue}>
+        <SelectTrigger size="sm">
+          <SelectValue placeholder="Small" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a" label="Option A">
+            <Text>Option A</Text>
+          </SelectItem>
+        </SelectContent>
+      </Select>
+      <Select value={value} onValueChange={setValue}>
+        <SelectTrigger size="lg">
+          <SelectValue placeholder="Large" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a" label="Option A">
+            <Text>Option A</Text>
+          </SelectItem>
+        </SelectContent>
+      </Select>
+    </View>
+  );
+}
+
+function SelectDisabledPreview() {
+  return (
+    <View className="w-full max-w-sm">
+      <Select>
+        <SelectTrigger disabled>
+          <SelectValue placeholder="Disabled" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a" label="Option">
+            <Text>Option</Text>
+          </SelectItem>
+        </SelectContent>
+      </Select>
+    </View>
+  );
+}
+
+export const selectPreviews = [
+  { name: 'Default', component: SelectPreview },
+  { name: 'Sizes', component: SelectSizesPreview },
+  { name: 'Disabled', component: SelectDisabledPreview },
+];

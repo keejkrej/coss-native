@@ -1,5 +1,5 @@
 import { Separator } from '@/registry/nativewind/components/ui/separator';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, DARK_INPUT_BG, DISABLED_OPACITY, SURFACE_SHADOW } from '@/registry/nativewind/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 import { Platform, TextInput, View } from 'react-native';
@@ -23,7 +23,7 @@ function useOTPField() {
 }
 
 const otpCellVariants = cva(
-  'border-input bg-background rounded-lg border text-center text-foreground shadow-sm shadow-black/5',
+  cn('border-input bg-background rounded-lg border text-center text-foreground', SURFACE_SHADOW, DARK_INPUT_BG),
   {
     variants: {
       size: {
@@ -59,7 +59,7 @@ function OTPField({
   return (
     <OTPFieldContext.Provider value={contextValue}>
       <View
-        className={cn('flex-row items-center gap-2', disabled && 'opacity-60', className)}
+        className={cn('flex-row items-center gap-2', disabled && DISABLED_OPACITY, className)}
         {...props}>
         {children}
       </View>

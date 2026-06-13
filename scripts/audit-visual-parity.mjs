@@ -19,25 +19,16 @@ const FLAGS = [
   { id: 'backdrop-50', pattern: /bg-black\/50/, cossExpect: 'bg-black/32' },
   { id: 'semantic-bg-10', pattern: /bg-(destructive|info|success|warning)\/10/, cossExpect: '/4 or /8' },
   { id: 'semantic-border-30', pattern: /border-(destructive|info|success|warning)\/30/, cossExpect: '/32' },
+  { id: 'raw-surface-shadow', pattern: /shadow-sm shadow-black\/5/, cossExpect: 'SURFACE_SHADOW constant' },
   { id: 'before-pseudo', pattern: /before:/, cossExpect: 'RN approximation (shadow/border)' },
 ];
 
-function extractCvaBlocks(content) {
-  const blocks = [];
-  const re = /cva\s*\(\s*(?:cn\s*\()?['"`]([^'"`]+)['"`]/gs;
-  let m;
-  while ((m = re.exec(content)) !== null) {
-    blocks.push(m[1].replace(/\s+/g, ' ').trim());
-  }
-  return blocks;
-}
-
-function extractVariantKeys(content) {
+function extractCvaVariantKeys(content) {
   const keys = new Set();
-  const variantSection = content.match(/variants:\s*\{([\s\S]*?)\n\s*\}/);
-  if (!variantSection) return keys;
-  for (const m of variantSection[1].matchAll(/^\s+(\w+[-\w]*):\s*\{/gm)) {
-    keys.add(m[1]);
+  for (const match of content.matchAll(/cva\s*\([\s\S]*?variants:\s*\{([\s\S]*?)\n\s*\}/g)) {
+    for (const m of match[1].matchAll(/^\s+(\w+[-\w]*):\s*\{/gm)) {
+      keys.add(m[1]);
+    }
   }
   return keys;
 }
@@ -56,14 +47,12 @@ function auditFile(name) {
   }));
   const cossFlags = FLAGS.filter((f) => f.pattern.test(coss)).map((f) => f.id);
 
-  const nativeVariants = extractVariantKeys(native);
-  const cossVariants = extractVariantKeys(coss);
+  const nativeVariants = extractCvaVariantKeys(native);
+  const cossVariants = extractCvaVariantKeys(coss);
   const missingVariantGroups = [...cossVariants].filter((k) => !nativeVariants.has(k));
 
   return {
     file: name,
-    nativeCvaCount: extractCvaBlocks(native).length,
-    cossCvaCount: extractCvaBlocks(coss).length,
     nativeFlags,
     cossPatterns: cossFlags,
     missingVariantGroups,
@@ -94,7 +83,7 @@ function main() {
       }
     }
     if (r.missingVariantGroups.length) {
-      console.log(`- Missing variant groups vs coss: ${r.missingVariantGroups.join(', ')}`);
+      console.log(`- Missing CVA variant groups vs coss: ${r.missingVariantGroups.join(', ')}`);
     }
     console.log('');
   }

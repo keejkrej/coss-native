@@ -1,6 +1,6 @@
 import { Icon } from '@/registry/nativewind/components/ui/icon';
 import { Label } from '@/registry/nativewind/components/ui/label';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, DARK_INPUT_BG, DISABLED_OPACITY, SURFACE_SHADOW } from '@/registry/nativewind/lib/utils';
 import { Minus, Plus } from 'lucide-react-native';
 import * as React from 'react';
 import { Platform, Pressable, TextInput, View } from 'react-native';
@@ -100,8 +100,10 @@ function NumberFieldGroup({ className, ...props }: React.ComponentProps<typeof V
   return (
     <View
       className={cn(
-        'border-input bg-background relative w-full flex-row items-center justify-between rounded-lg border shadow-sm shadow-black/5',
-        disabled && 'pointer-events-none opacity-60',
+        'border-input bg-background relative w-full flex-row items-center justify-between rounded-lg border',
+        SURFACE_SHADOW,
+        DARK_INPUT_BG,
+        disabled && cn('pointer-events-none', DISABLED_OPACITY),
         size === 'sm' && 'h-7',
         size === 'default' && 'h-9',
         size === 'lg' && 'h-10',

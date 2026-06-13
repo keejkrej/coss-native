@@ -1,7 +1,7 @@
 import { Icon } from '@/registry/nativewind/components/ui/icon';
 import { TextClassContext } from '@/registry/nativewind/components/ui/text';
 import { toggleVariants } from '@/registry/nativewind/components/ui/toggle';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, DISABLED_OPACITY, SURFACE_SHADOW } from '@/registry/nativewind/lib/utils';
 import * as ToggleGroupPrimitive from '@rn-primitives/toggle-group';
 import type { VariantProps } from 'class-variance-authority';
 import * as React from 'react';
@@ -20,9 +20,9 @@ function ToggleGroup({
   return (
     <ToggleGroupPrimitive.Root
       className={cn(
-        'flex flex-row items-center rounded-md shadow-none',
+        'flex flex-row items-center rounded-lg shadow-none',
         Platform.select({ web: 'w-fit' }),
-        variant === 'outline' && 'shadow-sm shadow-black/5',
+        variant === 'outline' && SURFACE_SHADOW,
         className
       )}
       {...props}>
@@ -58,12 +58,13 @@ function ToggleGroupItem({
   }) {
   const context = useToggleGroupContext();
   const { value } = ToggleGroupPrimitive.useRootContext();
+  const isSelected = ToggleGroupPrimitive.utils.getIsSelected(value, props.value);
 
   return (
     <TextClassContext.Provider
       value={cn(
         'text-sm text-foreground font-medium',
-        ToggleGroupPrimitive.utils.getIsSelected(value, props.value)
+        isSelected
           ? 'text-accent-foreground'
           : Platform.select({ web: 'group-hover:text-muted-foreground' })
       )}>
@@ -73,11 +74,11 @@ function ToggleGroupItem({
             variant: context.variant || variant,
             size: context.size || size,
           }),
-          props.disabled && 'opacity-50',
-          ToggleGroupPrimitive.utils.getIsSelected(value, props.value) && 'bg-accent',
+          props.disabled && DISABLED_OPACITY,
+          isSelected && 'bg-input/64',
           'min-w-0 shrink-0 rounded-none shadow-none',
-          isFirst && 'rounded-l-md',
-          isLast && 'rounded-r-md',
+          isFirst && 'rounded-l-lg',
+          isLast && 'rounded-r-lg',
           (context.variant === 'outline' || variant === 'outline') && 'border-l-0',
           (context.variant === 'outline' || variant === 'outline') && isFirst && 'border-l',
           Platform.select({
