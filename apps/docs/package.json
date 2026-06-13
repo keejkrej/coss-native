@@ -1,0 +1,11 @@
+{
+  "name": "@coss/docs",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "build:registry": "shadcn build ./registry/nativewind.json --output ./public/r/nativewind && node ./scripts/rewrite-registry-deps.mjs"
+  },
+  "devDependencies": {
+    "shadcn": "^3.0.0"
+  }
+}

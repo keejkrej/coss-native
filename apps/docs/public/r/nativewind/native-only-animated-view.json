@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-only-animated-view",
+  "title": "Native Only Animated View",
+  "description": "Reanimated wrapper that only animates on native platforms.",
+  "dependencies": [
+    "react-native-reanimated"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/native-only-animated-view.tsx",
+      "content": "import { Platform } from 'react-native';\nimport Animated from 'react-native-reanimated';\n\nfunction NativeOnlyAnimatedView(\n  props: React.ComponentProps<typeof Animated.View> & React.RefAttributes<typeof Animated.View>\n) {\n  if (Platform.OS === 'web') {\n    return <>{props.children as React.ReactNode}</>;\n  }\n  return <Animated.View {...props} />;\n}\n\nexport { NativeOnlyAnimatedView };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "title": "Spinner",
+  "description": "Loading spinner for buttons and async states.",
+  "dependencies": [
+    "lucide-react-native"
+  ],
+  "registryDependencies": [
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/utils.json",
+    "/Volumes/SSD/workspace/coss-native/apps/docs/public/r/nativewind/icon.json"
+  ],
+  "files": [
+    {
+      "path": "../../packages/registry/src/nativewind/components/ui/spinner.tsx",
+      "content": "import { Icon } from '@/registry/nativewind/components/ui/icon';\nimport { cn } from '@/registry/nativewind/lib/utils';\nimport { Loader2 } from 'lucide-react-native';\nimport { View } from 'react-native';\n\nfunction Spinner({ className, size = 16, ...props }: Omit<React.ComponentProps<typeof Icon>, 'as'>) {\n  return (\n    <View accessibilityRole=\"progressbar\" accessibilityLabel=\"Loading\">\n      <Icon as={Loader2} size={size} className={cn('animate-spin', className)} {...props} />\n    </View>\n  );\n}\n\nexport { Spinner };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

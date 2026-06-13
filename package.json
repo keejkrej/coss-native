@@ -1,0 +1,20 @@
+{
+  "name": "coss-native",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "clean": "turbo clean && rm -rf .turbo node_modules",
+    "build:registry": "pnpm --filter @coss/docs build:registry",
+    "coss-native": "node apps/cli/src/bin.js"
+  },
+  "devDependencies": {
+    "turbo": "^2.6.1",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.11.0"
+  }
+}

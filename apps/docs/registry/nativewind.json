@@ -1,0 +1,212 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "coss Native",
+  "homepage": "https://github.com/keejkrej/coss-native",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "cn() helper for merging Tailwind classes.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "dependencies": ["clsx", "tailwind-merge"]
+    },
+    {
+      "name": "global-css",
+      "type": "registry:style",
+      "title": "Global CSS",
+      "description": "coss semantic design tokens for NativeWind.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/styles/global.css",
+          "type": "registry:style",
+          "target": "global.css"
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "type": "registry:ui",
+      "title": "Text",
+      "description": "Typography component with TextClassContext for RN text style propagation.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils"],
+      "dependencies": ["@rn-primitives/slot", "class-variance-authority"]
+    },
+    {
+      "name": "icon",
+      "type": "registry:ui",
+      "title": "Icon",
+      "description": "Lucide icon wrapper with NativeWind className support.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/icon.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils", "text"],
+      "dependencies": ["lucide-react-native", "nativewind"]
+    },
+    {
+      "name": "native-only-animated-view",
+      "type": "registry:ui",
+      "title": "Native Only Animated View",
+      "description": "Reanimated wrapper that only animates on native platforms.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/native-only-animated-view.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["react-native-reanimated"]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Loading spinner for buttons and async states.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils", "icon"],
+      "dependencies": ["lucide-react-native"]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Visually or semantically separates content.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils"],
+      "dependencies": ["@rn-primitives/separator"]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Displays a badge or a component that looks like a badge.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils", "text"],
+      "dependencies": ["@rn-primitives/slot", "class-variance-authority"]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Displays a card with header, content, and footer.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils", "text"]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Displays a form input or a component that looks like an input.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils"],
+      "dependencies": ["@rn-primitives/switch"]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils", "icon"],
+      "dependencies": ["@rn-primitives/checkbox"]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Displays a button or a component that looks like a button.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils", "text", "spinner"],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal dialog that interrupts the user with important content.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils", "text", "icon", "native-only-animated-view"],
+      "dependencies": ["@rn-primitives/dialog", "@rn-primitives/portal", "react-native-screens"]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Displays a list of options for the user to pick from.",
+      "files": [
+        {
+          "path": "../../packages/registry/src/nativewind/components/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["utils", "text", "icon", "native-only-animated-view"],
+      "dependencies": ["@rn-primitives/select", "@rn-primitives/portal", "react-native-screens"]
+    }
+  ]
+}
