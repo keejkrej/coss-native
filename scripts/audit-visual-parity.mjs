@@ -25,11 +25,34 @@ const FLAGS = [
 
 function extractCvaVariantKeys(content) {
   const keys = new Set();
-  for (const match of content.matchAll(/cva\s*\([\s\S]*?variants:\s*\{([\s\S]*?)\n\s*\}/g)) {
-    for (const m of match[1].matchAll(/^\s+(\w+[-\w]*):\s*\{/gm)) {
-      keys.add(m[1]);
+  let searchFrom = 0;
+
+  while (searchFrom < content.length) {
+    const variantsIndex = content.indexOf('variants:', searchFrom);
+    if (variantsIndex === -1) break;
+
+    const variantsStart = content.indexOf('{', variantsIndex);
+    if (variantsStart === -1) break;
+
+    let depth = 0;
+    let variantsEnd = variantsStart;
+    for (; variantsEnd < content.length; variantsEnd++) {
+      const char = content[variantsEnd];
+      if (char === '{') depth++;
+      else if (char === '}') {
+        depth--;
+        if (depth === 0) break;
+      }
     }
+
+    const variantsBlock = content.slice(variantsStart + 1, variantsEnd);
+    for (const match of variantsBlock.matchAll(/^\s+(\w+[-\w]*):\s*\{/gm)) {
+      keys.add(match[1]);
+    }
+
+    searchFrom = variantsEnd + 1;
   }
+
   return keys;
 }
 

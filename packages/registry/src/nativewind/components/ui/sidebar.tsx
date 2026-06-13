@@ -9,7 +9,7 @@ import {
 } from '@/registry/nativewind/components/ui/sheet';
 import { Skeleton } from '@/registry/nativewind/components/ui/skeleton';
 import { Text } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, SURFACE_SHADOW } from '@/registry/nativewind/lib/utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { PanelLeft } from 'lucide-react-native';
@@ -159,7 +159,7 @@ function Sidebar({
     <View
       className={cn(
         'bg-sidebar border-sidebar-border h-full border-r',
-        variant === 'floating' && 'm-2 rounded-xl border shadow-sm',
+        variant === 'floating' && cn('m-2 rounded-xl border', SURFACE_SHADOW),
         variant === 'inset' && 'm-2 rounded-xl',
         className
       )}

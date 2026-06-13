@@ -1,6 +1,6 @@
 import { NativeOnlyAnimatedView } from '@/registry/nativewind/components/ui/native-only-animated-view';
 import { TextClassContext } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, ELEVATED_SHADOW } from '@/registry/nativewind/lib/utils';
 import * as TooltipPrimitive from '@rn-primitives/tooltip';
 import * as React from 'react';
 import { Platform, StyleSheet } from 'react-native';
@@ -36,11 +36,12 @@ function TooltipContent({
                 : FadeInUp.withInitialValues({ transform: [{ translateY: -5 }] })
             }
             exiting={FadeOut}>
-            <TextClassContext.Provider value="text-xs text-primary-foreground">
+            <TextClassContext.Provider value="text-popover-foreground text-xs">
               <TooltipPrimitive.Content
                 sideOffset={sideOffset}
                 className={cn(
-                  'bg-primary z-50 rounded-md px-3 py-2 sm:py-1.5',
+                  'bg-popover border-border text-popover-foreground z-50 rounded-md border px-3 py-2 sm:py-1.5',
+                  ELEVATED_SHADOW,
                   Platform.select({
                     web: cn(
                       'animate-in fade-in-0 zoom-in-95 origin-(--radix-tooltip-content-transform-origin) w-fit text-balance',

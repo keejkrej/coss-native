@@ -1,5 +1,5 @@
 import { Text } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, SURFACE_SHADOW } from '@/registry/nativewind/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { View } from 'react-native';
 
@@ -7,7 +7,7 @@ const emptyMediaVariants = cva('flex shrink-0 items-center justify-center', {
   variants: {
     variant: {
       default: 'bg-transparent',
-      icon: 'border-border bg-card size-9 rounded-md border shadow-sm shadow-black/5',
+      icon: cn('border-border bg-card text-foreground size-9 rounded-md border', SURFACE_SHADOW),
     },
   },
   defaultVariants: { variant: 'default' },

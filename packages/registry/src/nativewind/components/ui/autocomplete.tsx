@@ -10,7 +10,7 @@ import { Input } from '@/registry/nativewind/components/ui/input';
 import { ScrollArea } from '@/registry/nativewind/components/ui/scroll-area';
 import { Separator } from '@/registry/nativewind/components/ui/separator';
 import { Text } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, ELEVATED_SHADOW } from '@/registry/nativewind/lib/utils';
 import { ChevronsUpDown, X } from 'lucide-react-native';
 import * as React from 'react';
 import { FlatList, Platform, Pressable, View } from 'react-native';
@@ -134,7 +134,7 @@ function AutocompleteInput({
         </Pressable>
       ) : null}
       {open && filteredItems.length === 0 && inputValue ? (
-        <View className="absolute top-full z-50 mt-1 w-full rounded-lg border border-border bg-popover p-3 shadow-md">
+        <View className={cn('border-border bg-popover absolute top-full z-50 mt-1 w-full rounded-lg border p-3', ELEVATED_SHADOW)}>
           <Text className="text-muted-foreground text-sm">No results found.</Text>
         </View>
       ) : null}
@@ -152,7 +152,8 @@ function AutocompletePopup({
   return (
     <View
       className={cn(
-        'border-border bg-popover absolute top-full z-50 mt-1 w-full overflow-hidden rounded-lg border shadow-md shadow-black/5',
+        'border-border bg-popover absolute top-full z-50 mt-1 w-full overflow-hidden rounded-lg border',
+        ELEVATED_SHADOW,
         className
       )}
       {...props}>

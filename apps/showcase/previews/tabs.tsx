@@ -25,4 +25,36 @@ function TabsPreview() {
   );
 }
 
-export const tabsPreviews = [{ name: 'Default', component: TabsPreview }];
+function TabsUnderlinePreview() {
+  const [value, setValue] = React.useState('overview');
+
+  return (
+    <Tabs value={value} onValueChange={setValue} className="w-full max-w-sm">
+      <TabsList variant="underline">
+        <TabsTrigger value="overview">
+          <Text>Overview</Text>
+        </TabsTrigger>
+        <TabsTrigger value="analytics">
+          <Text>Analytics</Text>
+        </TabsTrigger>
+        <TabsTrigger value="reports">
+          <Text>Reports</Text>
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent value="overview">
+        <Text>Overview content.</Text>
+      </TabsContent>
+      <TabsContent value="analytics">
+        <Text>Analytics content.</Text>
+      </TabsContent>
+      <TabsContent value="reports">
+        <Text>Reports content.</Text>
+      </TabsContent>
+    </Tabs>
+  );
+}
+
+export const tabsPreviews = [
+  { name: 'Default', component: TabsPreview },
+  { name: 'Underline', component: TabsUnderlinePreview },
+];

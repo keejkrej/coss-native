@@ -1,5 +1,5 @@
 import { Text } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, SURFACE_SHADOW } from '@/registry/nativewind/lib/utils';
 import { View } from 'react-native';
 
 function Frame({ className, ...props }: React.ComponentProps<typeof View>) {
@@ -12,7 +12,8 @@ function FramePanel({ className, ...props }: React.ComponentProps<typeof View>) 
   return (
     <View
       className={cn(
-        'border-border bg-background rounded-xl border p-5 shadow-sm shadow-black/5',
+        'border-border bg-background rounded-xl border p-5',
+        SURFACE_SHADOW,
         className
       )}
       {...props}

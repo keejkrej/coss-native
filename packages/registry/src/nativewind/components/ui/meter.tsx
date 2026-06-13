@@ -16,7 +16,7 @@ function Meter({ className, value = 0, ...props }: React.ComponentProps<typeof V
 function MeterTrack({ className, ...props }: React.ComponentProps<typeof View>) {
   return (
     <View
-      className={cn('bg-primary/20 relative h-2 w-full overflow-hidden rounded-full', className)}
+      className={cn('bg-input relative h-2 w-full overflow-hidden rounded-full', className)}
       {...props}
     />
   );

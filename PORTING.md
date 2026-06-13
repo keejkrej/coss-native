@@ -43,7 +43,18 @@ The following have been tightened toward coss web visuals:
 | **Checkbox / Switch / Tabs** | coss sizes, `opacity-64`, active tab shadow |
 | **Dialog / AlertDialog / Sheet** | `bg-black/32` backdrop, popover surface, ghost close button, `rounded-2xl` |
 
-Remaining components (popover, sidebar, table, etc.) still use pre-audit styling. See audit script output.
+Remaining components (calendar, table API gaps, etc.) may still differ. See audit script output.
+
+## Visual alignment (overlays + surfaces)
+
+| Area | Changes |
+|------|---------|
+| **Popover / Preview card** | `rounded-lg`, `ELEVATED_SHADOW`, popover surface; ghost close button |
+| **Tooltip** | Popover surface styling (not primary fill), `ELEVATED_SHADOW` |
+| **Autocomplete / Combobox** | Popup list uses `ELEVATED_SHADOW` |
+| **Empty / Frame / Slider** | `SURFACE_SHADOW`, slider thumb `DARK_INPUT_BG` |
+| **Toolbar** | `rounded-xl` card surface, input `DARK_INPUT_BG` |
+| **Sidebar** | Floating variant uses `SURFACE_SHADOW` |
 
 ## Visual alignment (form + toggles)
 
@@ -55,8 +66,18 @@ Remaining components (popover, sidebar, table, etc.) still use pre-audit styling
 | **Toggle / Toggle group** | `rounded-lg`, pressed `bg-input/64`, outline `DARK_INPUT_BG` |
 | **Menu** | `ELEVATED_SHADOW`, `rounded-lg` popup, destructive text-only variant, item min-heights |
 | **Label / Accordion** | `opacity-64` disabled |
-| **Input group / Number field / OTP field** | Shared surface constants |
+| **Input group / Number field / OTP field** | Shared surface constants; addon `align` CVA |
 | **Drawer** | Backdrop opacity `0.32` |
+
+## Visual alignment (compound APIs + tracks)
+
+| Area | Changes |
+|------|---------|
+| **Card** | `CardAction`, `CardPanel`, `CardFrame*` compound exports; header grid for actions |
+| **Tabs** | `TabsList variant="underline"` with primary bottom border (static indicator) |
+| **Input group** | `InputGroupAddon` `align` variant (`inline-start`, `inline-end`, `block-start`, `block-end`) |
+| **Group** | `GroupText` muted input surface; `ButtonGroup*` aliases |
+| **Progress / Meter** | Track uses `bg-input`; progress height `h-1.5` |
 
 ## Styling gaps (cannot port 1:1)
 
@@ -64,15 +85,16 @@ Remaining components (popover, sidebar, table, etc.) still use pre-audit styling
 - `inset-shadow`, `not-dark:bg-clip-padding`
 - `pointer-coarse:after:min-h-11` → use explicit heights or `hitSlop`
 - CSS `data-*` descendant selectors (`in-[[data-slot=...]]`)
-- Tabs sliding `Indicator` animation (active tab uses static shadow approximation)
-- `CardFrame`, `CardAction`, `CardPanel` compound parts (not yet exported)
-- Tabs `variant="underline"` API
+- Tabs sliding `Indicator` animation (underline uses static border)
+- CardFrame clip-path stacking and nested card pseudo-depth
+- Input group focus/autofill/invalid descendant styling
 
 ## Deferred visual work
 
-- Remaining overlays and layout primitives (popover, tooltip, command, sidebar, table, etc.)
 - Particle-equivalent showcase previews for all components
-- Full pseudo-depth parity (`before:` inset shadows → `SURFACE_SHADOW` approximation only)
+- Full pseudo-depth parity (`before:` inset shadows → shadow constant approximation only)
+- CardFrame nested table clip-path behavior
+- Input group block-align auto `flex-col` on root (use `className="flex-col"` on `InputGroup`)
 
 ## RN-specific patterns
 

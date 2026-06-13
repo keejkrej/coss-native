@@ -1,4 +1,4 @@
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, DARK_INPUT_BG } from '@/registry/nativewind/lib/utils';
 import * as ToolbarPrimitive from '@rn-primitives/toolbar';
 import { Platform, TextInput, View } from 'react-native';
 
@@ -6,7 +6,7 @@ function Toolbar({ className, ...props }: React.ComponentProps<typeof ToolbarPri
   return (
     <ToolbarPrimitive.Root
       className={cn(
-        'bg-background flex h-10 flex-row items-center gap-1 rounded-md border p-1',
+        'bg-card border-border text-card-foreground flex h-10 flex-row items-center gap-1 rounded-xl border p-1',
         Platform.select({ web: 'w-full min-w-max' }),
         className
       )}
@@ -42,6 +42,7 @@ function ToolbarInput({ className, ...props }: React.ComponentProps<typeof TextI
     <TextInput
       className={cn(
         'border-input bg-background h-8 w-full min-w-0 rounded-md border px-2 text-sm',
+        DARK_INPUT_BG,
         className
       )}
       {...props}

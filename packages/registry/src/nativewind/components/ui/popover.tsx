@@ -1,7 +1,10 @@
+import { Button } from '@/registry/nativewind/components/ui/button';
+import { Icon } from '@/registry/nativewind/components/ui/icon';
 import { NativeOnlyAnimatedView } from '@/registry/nativewind/components/ui/native-only-animated-view';
 import { Text, TextClassContext } from '@/registry/nativewind/components/ui/text';
-import { cn } from '@/registry/nativewind/lib/utils';
+import { cn, ELEVATED_SHADOW } from '@/registry/nativewind/lib/utils';
 import * as PopoverPrimitive from '@rn-primitives/popover';
+import { X } from 'lucide-react-native';
 import * as React from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import { FadeIn, FadeOut } from 'react-native-reanimated';
@@ -32,7 +35,8 @@ function PopoverContent({
                 align={align}
                 sideOffset={sideOffset}
                 className={cn(
-                  'bg-popover border-border outline-hidden z-50 w-72 rounded-md border p-4 shadow-md shadow-black/5',
+                  'bg-popover border-border text-popover-foreground outline-hidden z-50 w-72 rounded-lg border p-4',
+                  ELEVATED_SHADOW,
                   Platform.select({
                     web: cn(
                       'animate-in fade-in-0 zoom-in-95 origin-(--radix-popover-content-transform-origin) cursor-auto',
@@ -57,10 +61,12 @@ function PopoverClose({
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Close>) {
   return (
-    <PopoverPrimitive.Close
-      className={cn('absolute right-4 top-4 rounded opacity-70 active:opacity-100', className)}
-      {...props}
-    />
+    <PopoverPrimitive.Close asChild {...props}>
+      <Button variant="ghost" size="icon" className={cn('absolute right-2 top-2', className)}>
+        <Icon as={X} className="text-foreground size-4 shrink-0" />
+        <Text className="sr-only">Close</Text>
+      </Button>
+    </PopoverPrimitive.Close>
   );
 }
 

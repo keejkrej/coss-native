@@ -1,5 +1,6 @@
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -28,4 +29,26 @@ function CardPreview() {
   );
 }
 
-export const cardPreviews = [{ name: 'Default', component: CardPreview }];
+function CardWithActionPreview() {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Notifications</CardTitle>
+        <CardDescription>Manage how you receive updates.</CardDescription>
+        <CardAction>
+          <Button size="sm" variant="outline">
+            <Text>Settings</Text>
+          </Button>
+        </CardAction>
+      </CardHeader>
+      <CardContent>
+        <Text>Email and push preferences appear here.</Text>
+      </CardContent>
+    </Card>
+  );
+}
+
+export const cardPreviews = [
+  { name: 'Default', component: CardPreview },
+  { name: 'With action', component: CardWithActionPreview },
+];
